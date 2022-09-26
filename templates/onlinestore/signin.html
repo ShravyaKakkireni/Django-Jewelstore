@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        form {
+            border: 3px solid #f1f1f1;
+        }
+        input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        }
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+</head>
+<body">
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+    <section class="vh-100" >
+    <h3 style="font-size: 50px"><center>LogIn to your account!</center></h3>
+    <form method="post" action="/signin" class="mb-2">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username" style="font-size: 20px">Username</label>
+            <input type="text" class="form-control" id="username" name="username" size="60" placeholder="Enter Your Username" Required>
+        </div><br>
+        <div class="form-group">
+            <label for="pass1" style="font-size: 20px">Password</label>
+            <input type="password" class="form-control" id="pass1" name="pass1" size="60" placeholder="Enter Your Password" Required>
+        </div><br>
+
+        <button type="submit" class="btn btn-primary" style="background: darkcyan;color:white;font-size: 20px;">Log In</button>
+    </form></section>
+</body>
+</html>

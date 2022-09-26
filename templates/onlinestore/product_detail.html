@@ -1,0 +1,45 @@
+{% extends 'onlinestore/base.html' %}
+{% load static %}
+{% block title %}
+    {{ product.name }} |
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row" style="margin-top: 1%">
+        <style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background-color: white;
+}
+.price {
+  color: grey;
+  font-size: 22px;
+}
+       </style>           
+            <p><a href="{% url 'index' %}">All Products </a> &gt;
+                {{ product.name }}
+            </p>
+            <div class="card" style="width: 100%;">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }} style="width:100%"">
+                <div class="card-body">
+                <h2 class="card-title">{{ product.name }}</h2>
+                <p class="price">Price ${{ product.price }}</p>
+                <p class="card-text">Description : {{ product.description }}</p>
+                
+                <form action="{% url 'product_detail' product.pk product.slug %}" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="Add to cart" style="width: 100%; padding: 12px; color: white;
+                    background-color: #000; font-size: 18px;">
+                </form>
+</div></div></div></div>
+                
+       
+
+{% endblock %}

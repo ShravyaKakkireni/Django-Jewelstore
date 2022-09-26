@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}Simple ecommerce </title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border: none;
+        }
+        td{
+            padding: 10px;
+        }
+        form{
+            border: 3px solid #f1f1f1;
+            margin-bottom: 0;
+        }
+        body  {
+            height: 200px;
+            background-color: #e9c1c1;
+        }
+        button {
+        background-color: #edc1de;
+        color: white;
+        padding: 7px 11px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+    }
+    /* set a hover effect for the button*/
+     
+    button:hover {
+        opacity: 0.8;
+    }
+    </style>
+</head>
+<body>
+
+    <p>
+        <a class="nav-link waves-effect" href="{% url 'index' %}">All Products</a> |
+        <a class="nav-link waves-effect" href="{% url 'show_cart' %}">Cart: {{ cart_item_count }} item</a>
+    </p>  
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>
